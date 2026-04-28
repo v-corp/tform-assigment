@@ -13,10 +13,10 @@ module "vpc" {
 }
 
 module "alb" {
-  source            = "./modules/alb"
-  project_name      = var.project_name
-  vpc_id            = module.vpc.vpc_id
-  public_subnet_ids = module.vpc.public_subnet_ids
+  source= "./modules/alb"
+  project_name= var.project_name
+  vpc_id= module.vpc.vpc_id
+  public_subnet_ids= module.vpc.public_subnet_ids
 }
 
 module "ec2" {
@@ -29,5 +29,5 @@ module "ec2" {
   key_name= aws_key_pair.test_key.key_name
   desired_capacity= var.desired_capacity
   alb_security_group_id = module.alb.security_group_id
-  target_group_arn      = module.alb.target_group_arn
+  target_group_arn = module.alb.target_group_arn
 }
